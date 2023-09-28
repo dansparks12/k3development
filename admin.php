@@ -56,7 +56,7 @@ if(!$user->isLoggedIn()) {
 					$month = date('m');
 					$year = date('Y');
 				
-					for ($i = 1; $i <= 12; $i++) {
+					for ($i = 1; $i <= 17; $i++) {
 						$dateObj = DateTime::createFromFormat('!m', $month);
 					$monthName = $dateObj->format('F');
 					echo "<hr />";
