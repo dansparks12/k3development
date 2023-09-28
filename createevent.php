@@ -2,24 +2,73 @@
 <?php
 require 'core/init.php';
 $user = new User();
+$event = new Event();
 if(!$user->isLoggedIn()) {
 	Redirect::to('index.php');
 }
 
-if (Input::exist()) {
+if (Input::exists()) {
 
 	$validate = new Validate();
 	$validation = $validate->check($_POST, array(
-		'event_name' => array(
+		'eventName' => array(
 			'required' => true,
-			'min' => 3,
-			''
-
-	))
-
-
-
-
+			'min' => 3),
+		'date' => array(
+			'required' => true),
+		'time' => array(
+			'required' => true),
+		'category' => array(
+			'required' => true,
+			'max' => 1)
+		));
+		if ($validation->passed()) {
+			try {
+				$event->create(array(
+					'event_name' => Input::get('eventName'),
+					'date' => Input::get('date'),
+					'time' => Input::get('time'),
+					'month' => date("m", strtotime(Input::get('date'))),
+					'year' => date("Y", strtotime(Input::get('date'))),
+					'location' => Input::get('location'),
+					'getinvolved' => Input::get('involved'),
+					'joining' => Input::get('joining'),
+					'organiser' => Input::get('organiser'),
+					'audience' => Input::get('audience'),
+					'category' => Input::get('category'),
+					for ($i = 1; $i <= 20; $i++){
+						'marketing'.$i.''=> Input::get('marketing'.$i.''),
+						if ($i == 20) {
+							'marketing'.$i.''=> Input::get('marketing'.$i.'')	
+						}
+					}
+					//'marketing1' => Input::get('marketing1'),
+					//'marketing2' => Input::get('marketing2'),
+					//'marketing3' => Input::get('marketing3'),
+					//'marketing4' => Input::get('marketing4'),
+					//'marketing5' => Input::get('marketing5'),
+					//'marketing6' => Input::get('marketing6'),
+					//'marketing7' => Input::get('marketing7'),
+					//'marketing8' => Input::get('marketing8'),
+					//'marketing9' => Input::get('marketing9'),
+					//'marketing10' => Input::get('marketing10'),
+					//'marketing11' => Input::get('marketing11'),
+					//'marketing12' => Input::get('marketing12'),
+					//'marketing13' => Input::get('marketing13'),
+					//'marketing14' => Input::get('marketing14'),
+					//'marketing15' => Input::get('marketing15'),
+					//'marketing16' => Input::get('marketing16'),
+					//'marketing17' => Input::get('marketing17'),
+					//'marketing18' => Input::get('marketing18'),
+					//'marketing19' => Input::get('marketing19'),
+					//'marketing20' => Input::get('marketing20')
+				));
+			}catch(Exception $e){
+				die($e->getMessage());
+			}
+			Session::flash('Event added sucessfully');
+			Redirect::to('admin.php');
+		}
 }
 ?>
 
@@ -167,7 +216,7 @@ if (Input::exist()) {
 												<input type="text" name="marketing20" id="marketing20" value="" placeholder="Dates" />
 									</div>
 										</div>
-											<br />
+										
 										<ul class="actions">
 											<li style="margin:auto;"><input type="submit" value="Submit" class="primary" /></li>
 										</ul>
