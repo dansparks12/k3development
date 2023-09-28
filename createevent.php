@@ -36,32 +36,26 @@ if (Input::exists()) {
 					'organiser' => Input::get('organiser'),
 					'audience' => Input::get('audience'),
 					'category' => Input::get('category'),
-					for ($i = 1; $i <= 20; $i++){
-						'marketing'.$i.''=> Input::get('marketing'.$i.''),
-						if ($i == 20) {
-							'marketing'.$i.''=> Input::get('marketing'.$i.'')	
-						}
-					}
-					//'marketing1' => Input::get('marketing1'),
-					//'marketing2' => Input::get('marketing2'),
-					//'marketing3' => Input::get('marketing3'),
-					//'marketing4' => Input::get('marketing4'),
-					//'marketing5' => Input::get('marketing5'),
-					//'marketing6' => Input::get('marketing6'),
-					//'marketing7' => Input::get('marketing7'),
-					//'marketing8' => Input::get('marketing8'),
-					//'marketing9' => Input::get('marketing9'),
-					//'marketing10' => Input::get('marketing10'),
-					//'marketing11' => Input::get('marketing11'),
-					//'marketing12' => Input::get('marketing12'),
-					//'marketing13' => Input::get('marketing13'),
-					//'marketing14' => Input::get('marketing14'),
-					//'marketing15' => Input::get('marketing15'),
-					//'marketing16' => Input::get('marketing16'),
-					//'marketing17' => Input::get('marketing17'),
-					//'marketing18' => Input::get('marketing18'),
-					//'marketing19' => Input::get('marketing19'),
-					//'marketing20' => Input::get('marketing20')
+					'marketing1' => Input::get('marketing1'),
+					'marketing2' => Input::get('marketing2'),
+					'marketing3' => Input::get('marketing3'),
+					'marketing4' => Input::get('marketing4'),
+					'marketing5' => Input::get('marketing5'),
+					'marketing6' => Input::get('marketing6'),
+					'marketing7' => Input::get('marketing7'),
+					'marketing8' => Input::get('marketing8'),
+					'marketing9' => Input::get('marketing9'),
+					'marketing10' => Input::get('marketing10'),
+					'marketing11' => Input::get('marketing11'),
+					'marketing12' => Input::get('marketing12'),
+					'marketing13' => Input::get('marketing13'),
+					'marketing14' => Input::get('marketing14'),
+					'marketing15' => Input::get('marketing15'),
+					'marketing16' => Input::get('marketing16'),
+					'marketing17' => Input::get('marketing17'),
+					'marketing18' => Input::get('marketing18'),
+					'marketing19' => Input::get('marketing19'),
+					'marketing20' => Input::get('marketing20')
 				));
 			}catch(Exception $e){
 				die($e->getMessage());
