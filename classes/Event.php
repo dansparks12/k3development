@@ -96,6 +96,11 @@ class Event {
   {
     return $this->_data;
   }
+  public function delete($row, $id) {
+    if(!$this->_db->deleteEvent('events', $row, $id )) {
+    throw new Exception('There was a problem deleting this event');
+    }
+  }
 
 
 }

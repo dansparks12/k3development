@@ -103,7 +103,7 @@ class DB {
         
     }
 
-    public function deleteTeam($table, $row, $id) { 
+    public function deleteEvent($table, $row, $id) { 
         $sql = "DELETE FROM {$table} WHERE {$row} = {$id}";
         if(!$this->query($sql)->error()){
             return true;
