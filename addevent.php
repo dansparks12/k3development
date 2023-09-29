@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <?php
-require 'core/init.php';
+require "core/init.php";
 $user = new User();
 $event = new Event();
-if(!$user->isLoggedIn()) {
-	Redirect::to('index.php');
+if (!$user->isLoggedIn()) {
+    Redirect::to("index.php");
 }
 ?>
 <html>

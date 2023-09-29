@@ -1,11 +1,11 @@
 <?php
-require 'core/init.php';
+require "core/init.php";
 $user = new User();
 $event = new Event();
-if(!$user->isLoggedIn()) {
-    Redirect::to('index.php');
+if (!$user->isLoggedIn()) {
+    Redirect::to("index.php");
 }
-$id = Input::get('view');
+$id = Input::get("view");
 $event->findID($id);
 ?>
 <html>
@@ -22,7 +22,8 @@ $event->findID($id);
 				<header>
 					<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
 					<h1 id="logo"><a href="#">K3 Alpha</a></h1>
-                    <p> Welcome back <br /> <?php echo $user->data()->name; ?> is logged in. </p>
+                    <p> Welcome back <br /> <?php echo $user->data()
+                        ->name; ?> is logged in. </p>
 					
 				</header>
 				<nav id="nav">
@@ -60,16 +61,17 @@ $event->findID($id);
                                         </tr>
                                         <tr>
 
-                                        <?php
-                                        switch($event->data()->category) {
+                                        <?php switch (
+                                            $event->data()->category
+                                        ) {
                                             case 1:
-                                              $category = "Category 1";
-                                              $cat = 1;
-                                              break;
+                                                $category = "Category 1";
+                                                $cat = 1;
+                                                break;
                                             case 2:
                                                 $category = "Category 2";
                                                 $cat = 2;
-                                               break;
+                                                break;
                                             case 3:
                                                 $category = "Category 3";
                                                 $cat = 3;
@@ -83,14 +85,18 @@ $event->findID($id);
                                                 $cat = 5;
                                                 break;
                                             default:
-                                            $category = "No category specified";  
-                                        }
-                                        ?>
-                                        <td><?php echo $event->data()->event_name;?></td>
-                                        <td><?php echo $event->data()->date;?></td>
-                                        <td><?php echo $event->data()->time;?></td>
-                                        <td><?php echo $event->data()->location;?></td>
-                                        <td><?php echo $category;?></td>
+                                                $category =
+                                                    "No category specified";
+                                        } ?>
+                                        <td><?php echo $event->data()
+                                            ->event_name; ?></td>
+                                        <td><?php echo $event->data()
+                                            ->date; ?></td>
+                                        <td><?php echo $event->data()
+                                            ->time; ?></td>
+                                        <td><?php echo $event->data()
+                                            ->location; ?></td>
+                                        <td><?php echo $category; ?></td>
                                         </tr>
                                         </table>
                                         <table>
@@ -101,10 +107,14 @@ $event->findID($id);
                                          <th>Audience</th>
                                          </tr>
                                          <tr>
-                                        <td><?php echo $event->data()->getinvolved;?></td>
-                                        <td><?php echo $event->data()->joining;?></td>
-                                        <td><?php echo $event->data()->organiser;?></td>
-                                        <td><?php echo $event->data()->audience;?></td>
+                                        <td><?php echo $event->data()
+                                            ->getinvolved; ?></td>
+                                        <td><?php echo $event->data()
+                                            ->joining; ?></td>
+                                        <td><?php echo $event->data()
+                                            ->organiser; ?></td>
+                                        <td><?php echo $event->data()
+                                            ->audience; ?></td>
                                     </tr>
                                     </table>
                                     <h2> Marketing </h2>
@@ -116,46 +126,50 @@ $event->findID($id);
                                          <th>Handout at other event</th>
                                          </tr>
                                          <tr>
-                                        <td><?php if ($event->data()->marketing1 == 1) {
+                                        <td><?php if (
+                                            $event->data()->marketing1 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing1 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing1 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing1;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing2 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing2 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing2 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing2 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing2;
-                                        }                                        
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing3 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing3 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif($event->data()->marketing3 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing3 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing3;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing4 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing4 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing4 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing4 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing4;
-                                        }
-                                        ?></td>
+                                        } ?></td>
                                      </tr>
                                     </table>
                                     <table>
@@ -166,46 +180,50 @@ $event->findID($id);
                                          <th>Social Media</th>
                                          </tr>
                                          <tr>
-                                        <td><?php if ($event->data()->marketing5 == 1) {
+                                        <td><?php if (
+                                            $event->data()->marketing5 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing5 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing5 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing6;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing6 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing6 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif($event->data()->marketing6 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing6 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing6;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing7 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing7 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing7 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing7 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing7;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing8 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing8 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing8 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing8 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing8;
-                                        }
-                                        ?></td>
+                                        } ?></td>
                                      </tr>
                                     </table>
                                     <br />
@@ -217,46 +235,50 @@ $event->findID($id);
                                          <th>Kerb Banners</th>
                                          </tr>
                                          <tr>
-                                        <td><?php if ($event->data()->marketing9 == 1) {
+                                        <td><?php if (
+                                            $event->data()->marketing9 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing9 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing9 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing9;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing10 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing10 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing10 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing10 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else{
+                                        } else {
                                             echo $event->data()->marketing10;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing11 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing11 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing11 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing11 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else{
+                                        } else {
                                             $event->data()->marketing11;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing12 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing12 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing12 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing12 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing12;
-                                        }
-                                        ?></td>
+                                        } ?></td>
                                      </tr>
                                     </table>
                                     <br />
@@ -268,46 +290,50 @@ $event->findID($id);
                                          <th>Front Door signs</th>
                                          </tr>
                                          <tr>
-                                        <td><?php if ($event->data()->marketing13 == 1) {
+                                        <td><?php if (
+                                            $event->data()->marketing13 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing13 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing13 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing13;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing14 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing14 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing14 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing14 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing14;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing15 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing15 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing15 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing15 == 0
+                                        ) {
                                             echo "No";
-                                        } 
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing15;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing16 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing16 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing16 == 0)  {
+                                        } elseif (
+                                            $event->data()->marketing16 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing16;
-                                        }
-                                        ?></td>
+                                        } ?></td>
                                      </tr>
                                     </table>
                                     <br />
@@ -319,78 +345,83 @@ $event->findID($id);
                                          <th>Specific email</th>
                                          </tr>
                                          <tr>
-                                        <td><?php if ($event->data()->marketing17 == 1) {
+                                        <td><?php if (
+                                            $event->data()->marketing17 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing17 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing17 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing17;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing18 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing18 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing18 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing18 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing18;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing19 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing19 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing19 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing19 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing19;
-                                        }
-                                        ?></td>
-                                        <td><?php if ($event->data()->marketing20 == 1) {
+                                        } ?></td>
+                                        <td><?php if (
+                                            $event->data()->marketing20 == 1
+                                        ) {
                                             echo "Yes";
-                                        }
-                                        elseif ($event->data()->marketing20 == 0) {
+                                        } elseif (
+                                            $event->data()->marketing20 == 0
+                                        ) {
                                             echo "No";
-                                        }
-                                        else {
+                                        } else {
                                             echo $event->data()->marketing20;
-                                        }
-                                        ?></td>
+                                        } ?></td>
                                      </tr>
                                     </table>
                                     <br />
                                     <?php
                                     $cat = $event->data()->category;
-                                
-                                    switch($cat) {
-                                    case 1:
-                                    $time = "4-6 months";
-                                    break;
-                                    case 2:
-                                    $time = "2-3 months";
-                                    break;
-                                    case 3:
-                                    $time = "1 month";
-                                    break;
-                                    case 4:
-                                    $time = "A few weeks";
-                                    break;
-                                    case 5:
-                                    $time = "Just before the event";
-                                    default:
-                                    $time = "";
+
+                                    switch ($cat) {
+                                        case 1:
+                                            $time = "4-6 months";
+                                            break;
+                                        case 2:
+                                            $time = "2-3 months";
+                                            break;
+                                        case 3:
+                                            $time = "1 month";
+                                            break;
+                                        case 4:
+                                            $time = "A few weeks";
+                                            break;
+                                        case 5:
+                                            $time = "Just before the event";
+                                        default:
+                                            $time = "";
                                     }
-                                    
+
                                     if ($cat == 0) {
-                                    echo " ";  
+                                        echo " ";
+                                    } else {
+                                        echo "<h3> Based on the category, start planning this event <u>" .
+                                            $time .
+                                            "</u> beforehand. </h3>";
                                     }
-                                    else {
-                                        echo "<h3> Based on the category, start planning this event <u>" . $time . "</u> beforehand. </h3>"; 
-                                    }
-                                     ?> 
+                                    ?> 
 									</header>
                                    
 										

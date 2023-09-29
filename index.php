@@ -1,46 +1,47 @@
 <!DOCTYPE HTML>
 <?php
-require_once 'core/init.php';
+require_once "core/init.php";
 
 $user = new User();
-if($user->isLoggedIn()) {
-	Redirect::to('admin.php');
+if ($user->isLoggedIn()) {
+    Redirect::to("admin.php");
 }
 
+if (Input::exists()) {
+    if (Token::check(Input::get("token"))) {
+        $validate = new Validate();
+        $validation = $validate->check($_POST, [
+            "username" => ["required" => true],
+            "password" => ["required" => true],
+        ]);
 
-if(Input::exists()){
-	if(Token::check(Input::get('token'))){
-		
-		$validate = new Validate();
-		$validation = $validate->check($_POST, array(
-			'username' => array('required' => true),
-			'password' => array('required' => true)
-			));
-			
-			if($validation->passed()){
-				$user = new User();
-				
-				$remember = (Input::get('remember') === 'on') ? true : false;
-				$login = $user->login(Input::get('username'), Input::get('password'), $remember);
-				
-				if($login){
-					Session::flash('success', "<h3>Welcome " . Input::get('username') . "!</h3>");
-					Redirect::to('admin.php');
-				} 
-				else {
-					Session::flash('failed', 'Login Failed, Please try again.');
-					Redirect::to('index.php#first');
-					
-				}
-			} else{
-				foreach($validation->errors() as $error){
-					echo $error, '<br>';
-				}
-			}
-		}
-	}
+        if ($validation->passed()) {
+            $user = new User();
 
+            $remember = Input::get("remember") === "on" ? true : false;
+            $login = $user->login(
+                Input::get("username"),
+                Input::get("password"),
+                $remember
+            );
 
+            if ($login) {
+                Session::flash(
+                    "success",
+                    "<h3>Welcome " . Input::get("username") . "!</h3>"
+                );
+                Redirect::to("admin.php");
+            } else {
+                Session::flash("failed", "Login Failed, Please try again.");
+                Redirect::to("index.php#first");
+            }
+        } else {
+            foreach ($validation->errors() as $error) {
+                echo $error, "<br>";
+            }
+        }
+    }
+}
 ?>
 <html>
 	<head>
@@ -87,14 +88,14 @@ if(Input::exists()){
 												<label for="password">Password</label>
 												<input type="password" name="password" id="password" value="" placeholder="Password" />
 												
-											<input type="hidden" name="token" value="<?php echo Token::generate();?>">
+											<input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
 											<br />
 											<input type="submit" value="Login" class="primary" />
 										
 
-											<?php if (Session::exists('failed')){ 
-        										echo Session::flash('failed'); }
-						        					?>
+											<?php if (Session::exists("failed")) {
+               echo Session::flash("failed");
+           } ?>
 </div>
 										
 									</form>

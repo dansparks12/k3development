@@ -1,11 +1,10 @@
 <?php
-require 'core/init.php';
+require "core/init.php";
 $user = new User();
 $event = new Event();
-if(!$user->isLoggedIn()) {
-	Redirect::to('index.php');
+if (!$user->isLoggedIn()) {
+    Redirect::to("index.php");
 }
-
 ?>
 
 <html>
@@ -51,36 +50,46 @@ if(!$user->isLoggedIn()) {
 										<h2>Data</h2>
 									</header>
                                     <?php
-					
+                                    $month = date("m");
+                                    $year = date("Y");
 
-					$month = date('m');
-					$year = date('Y');
-				
-					for ($i = 1; $i <= 17; $i++) {
-						$dateObj = DateTime::createFromFormat('!m', $month);
-					$monthName = $dateObj->format('F');
-					echo "<hr />";
-						echo "<h2><u>" . $monthName . " " . $year . "</u></h2>";
-					
-						foreach($event->eventByMonth($month, $year)->results() as $events) {
-							$dbdate = strtotime($events->date);
-							$date = date("d F Y", $dbdate);
-							echo "<h4>" .  $events->event_name . " | " . $date . "</h4>";
-							echo "<a href=\"edit.php?edit=$events->event_id\">edit</a> | <a href=\"delete.php?delete=$events->event_id\">delete</a> | <a href=\"view.php?view=$events->event_id\">view</a>";
-							echo "<br />";
-							echo "<br />";
-						}
-						$month++;
-						if ($month == 13) { 
-							$month = 1;
-							$year++;
+                                    for ($i = 1; $i <= 17; $i++) {
+                                        $dateObj = DateTime::createFromFormat(
+                                            "!m",
+                                            $month
+                                        );
+                                        $monthName = $dateObj->format("F");
+                                        echo "<hr />";
+                                        echo "<h2><u>" .
+                                            $monthName .
+                                            " " .
+                                            $year .
+                                            "</u></h2>";
 
-						}
-					}
-					
-				
-
-                    ?>
+                                        foreach (
+                                            $event
+                                                ->eventByMonth($month, $year)
+                                                ->results()
+                                            as $events
+                                        ) {
+                                            $dbdate = strtotime($events->date);
+                                            $date = date("d F Y", $dbdate);
+                                            echo "<h4>" .
+                                                $events->event_name .
+                                                " | " .
+                                                $date .
+                                                "</h4>";
+                                            echo "<a href=\"edit.php?edit=$events->event_id\">edit</a> | <a href=\"delete.php?delete=$events->event_id\">delete</a> | <a href=\"view.php?view=$events->event_id\">view</a>";
+                                            echo "<br />";
+                                            echo "<br />";
+                                        }
+                                        $month++;
+                                        if ($month == 13) {
+                                            $month = 1;
+                                            $year++;
+                                        }
+                                    }
+                                    ?>
 </div>
 										
 									</form>
