@@ -30,11 +30,11 @@ class Event {
 
     public function update($fields = array(), $id = null)
     {
-      if (!$id && $this->isLoggedIn()) {
-        $id = $this->data()->id;
+      if (!$id) {
+        $id = $this->data()->event_id;
       }
   
-      if (!$this->_db->update('events', $id, $fields)) {
+      if (!$this->_db->update('events', 'event_id', $id, $fields)) {
         throw new Exception('There was a problem updating.');
   
       }
