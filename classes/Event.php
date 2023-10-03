@@ -44,6 +44,10 @@ class Event {
       return $this->_db->getAll('events');
     }
 
+    public function allEventsASC() {
+      return $this->_db->query("SELECT * FROM events ORDER BY date ASC;");
+    }
+
     public function countEvents() {
       $sql = "SELECT COUNT(*) FROM events";
       return $this->_db->query($sql);
