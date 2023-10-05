@@ -29,6 +29,7 @@ if (!$user->isLoggedIn()) {
 						<li><a href="admin.php" class="active">Admin Area</a></li>
 						<li><a href="createevent.php">Add Event</a></li>
 						<li><a href="createuser.php">Create User</a></li>
+						<li><a href="viewall.php">View all events</a></li>
                         <li><a href="logout.php">Logout</a></li>
 					</ul>
 				</nav>
@@ -49,6 +50,13 @@ if (!$user->isLoggedIn()) {
 									<header class="major">
 										<h2>Data</h2>
 									</header>
+									<form>
+        						<input type="text" id="search-bar" placeholder="Search...">
+   								 </form>
+    								<div id="search-results">
+
+									</div>
+   
                                     <?php
                                     $month = date("m");
                                     $year = date("Y");
@@ -93,6 +101,7 @@ if (!$user->isLoggedIn()) {
 </div>
 										
 									</form>
+									
 								</div>
 </section>
 
@@ -118,6 +127,7 @@ if (!$user->isLoggedIn()) {
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/search.js"></script>
 
 	</body>
 </html>

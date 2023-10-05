@@ -25,9 +25,10 @@ if(!$user->isLoggedIn()) {
 				</header>
 				<nav id="nav">
 					<ul>
-						<li><a href="admin.php" class="active">Admin Area</a></li>
+						<li><a href="admin.php">Admin Area</a></li>
 						<li><a href="createevent.php">Add Event</a></li>
 						<li><a href="createuser.php">Create User</a></li>
+						<li><a href="viewall.php"  class="active">View all events</a></li>
                         <li><a href="logout.php">Logout</a></li>
 					</ul>
 				</nav>

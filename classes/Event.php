@@ -43,6 +43,16 @@ class Event {
     public function allEvents() { 
       return $this->_db->getAll('events');
     }
+    
+    public function searchEvents($searchQuery) {
+      $result = $this->_db->query("SELECT event_name FROM events WHERE event_name LIKE '%$searchQuery%'");
+    
+      $results = [];
+      while ($row = $result->fetch_assoc()) {
+        $results[] = $row;
+      }
+      return $results;
+    }
 
     public function allEventsASC() {
       return $this->_db->query("SELECT * FROM events ORDER BY date ASC;");
