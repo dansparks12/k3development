@@ -51,12 +51,6 @@ if (!$user->isLoggedIn()) {
 										<h2>Data</h2>
 									</header>
 									<form>
-        						<input type="text" id="search-bar" placeholder="Search...">
-   								 </form>
-    								<div id="search-results">
-
-									</div>
-   
                                     <?php
                                     $month = date("m");
                                     $year = date("Y");
