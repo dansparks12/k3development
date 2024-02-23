@@ -73,6 +73,7 @@ if (Input::exists()) {
 
 <html>
 	<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<title>K3</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -154,8 +155,9 @@ if (Input::exists()) {
 												<br />
 												<h4> Please write them like this 'Sun 13 Sept 2023' and seperate with a comma. </h4>
 												<br />
+												
 											
-												<select name="marketing" id="marketing">
+												<select class="select" id="marketing" name="marketing">
 												<?php
 											
 												foreach($marketing->totalMarketing()->results() as $marketings) {
@@ -165,8 +167,25 @@ if (Input::exists()) {
 												
 												?>
 												</select>
-												<br />
+												<script>
+													const selectEl = document.getElementById('marketing');
+													selectEl.addEventListener('change', () => {
+													var text = selectEl.options[selectEl.selectedIndex].text;
+													<?php
+													$javascript_to_php_variable = echo "<script>document.writeln(text);</script>" ;
+													echo $javascript_to_php_variable;
+													?>
+													
+													console.log(text);
+												});
+
+</script>
 											
+												
+						
+											<br />
+
+											<br />
                                 
 												<input type="date" name="marketing1" id="marketing1" value="" placeholder="Dates" />
 												<input type="date" name="marketing2" id="marketing1" value="" placeholder="Dates" />
